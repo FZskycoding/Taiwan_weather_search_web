@@ -90,13 +90,16 @@ def index():
         weather_data = get_weather_data(location)
         simplified_data = simplify_data(weather_data)
         current_weather = get_current_weather(simplified_data)
+        # print(current_weather)
 
         if current_weather:
             weather_info = {
                 'location': location,
-                'Wx': current_weather.get('Wx', 'N/A'),
+                'Wx': current_weather.get('Wx', 'N/A'), #如果 Wx 不存在，回傳預設值 'N/A'
                 'PoP': current_weather.get('PoP', 'N/A'),
                 'CI': current_weather.get('CI', 'N/A'),
+                'MinT': current_weather.get('MinT', 'N/A'),
+                'MaxT': current_weather.get('MaxT', 'N/A')
             }
 
     return render_template('index.html', weather=weather_info, city=city_input)
