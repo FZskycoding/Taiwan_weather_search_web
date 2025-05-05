@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>台灣天氣查詢</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>台灣天氣查詢</h1>
+        <form method="post">
+            <input type="text" name="city" placeholder="輸入城市，例如：台中市" value="{{ city }}">
+            <button type="submit">查詢</button>
+        </form>
+
+        {% if weather %}
+        <div class="result">
+            <h2>{{ weather.location }}</h2>
+            <p>氣候：{{ weather.Wx }}</p>
+            <p>降雨機率：{{ weather.PoP }}</p>
+            <p>體感：{{ weather.CI }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
