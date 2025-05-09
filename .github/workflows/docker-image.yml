@@ -20,3 +20,17 @@ jobs:
 
       - name: Push Docker image
         run: docker push fzsky/flask-weather-app
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            cd flask-app
+            ./deploy.sh
