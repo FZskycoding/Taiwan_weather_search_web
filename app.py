@@ -91,7 +91,7 @@ def index():
         weather_data = get_weather_data(location)
         simplified_data = simplify_data(weather_data)
         current_weather = get_current_weather(simplified_data)
-        print(current_weather)
+        # print(current_weather)
 
         if current_weather:
             weather_info = {
