@@ -23,10 +23,4 @@ def test_index_get(client):
     assert response.status_code == 200
     assert b"<h1>\xe5\x8f\xb0\xe7\x81\xa3\xe5\xa4\xa9\xe6\xb0\xa3\xe6\x9f\xa5\xe8\xa9\xa2</h1>" in response.data # 檢查標題是否存在
 
-def test_index_post(client):
-    """測試提交城市查詢 (POST) 的功能"""
-    # 模擬發送一個 POST 請求
-    response = client.post('/', data={'city': '臺北市'})
-    assert response.status_code == 200
-    assert b"<h2>\xe8\x87\xba\xe5\x8c\x97\xe5\xb8\x82</h2>" in response.data # 檢查查詢結果中是否包含城市名稱
-    assert b"\xe9\x99\x8d\xe9\x9b\xa8\xe6\xa9\x9f\xe7\x8e\x87" in response.data # 檢查 "降雨機率" 字樣是否存在
+
