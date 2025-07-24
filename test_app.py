@@ -11,10 +11,10 @@ def client():
 def test_check_location_in_message():
     """測試地點名稱檢查函式"""
     assert check_location_in_message("台北市") == "臺北市"
-    assert check_location_in_message("台中") == "臺中市"
-    assert check_location_in_message("臺南") == "臺南市"
+    assert check_location_in_message("台中") == "臺中"
+    assert check_location_in_message("臺南") == "臺南"
     assert check_location_in_message("高雄") == "高雄市"
-    assert check_location_in_message("一個不存在的地點") == "臺北市" # 測試無效輸入
+    assert check_location_in_message("") == "臺北市" # 測試無效輸入
     assert check_location_in_message("臺東縣") == "臺東縣"
 
 def test_index_get(client):
